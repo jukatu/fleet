@@ -7,6 +7,6 @@ metadata:
 spec:
   interval: 30s
   ref:
-    branch: dev
+    branch: main
   url: https://github.com/jukatu/podinfo
 
