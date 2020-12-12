@@ -77,3 +77,14 @@ flux create source git webapp \
   --interval=30s \
   --export > ./dev-cluster/webapp-source.yaml
 ```
+
+#### Create a kustomization for synchronizing the common manifests on the cluster
+```bash
+flux create kustomization webapp-common \
+  --source=webapp \
+  --path="./deploy/overlays/dev/webapp" \
+  --prune=true \
+  --validation=client \
+  --interval=1h \
+  --export > ./dev-cluster/webapp-common.yaml
+```
