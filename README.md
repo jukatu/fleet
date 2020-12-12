@@ -40,14 +40,14 @@ The only difference between the configuration are the hosted ports to allow to r
 On actual usage, we will use, instead the same default host ports (80 and 443) for all clusters.
 
 
-### Prepare Bootstrap repo
+### Prepare bootstrap repo
 ```bash
 # Go to the fleet repo
 git clone https://github.com/jukatu/fleet.git
 cd fleet
 ```
 
-### Bootstrap dev
+### Bootstrap dev cluster
 ```bash
 kind create cluster --name dev --config=clusters/cluster-dev.yaml
 
