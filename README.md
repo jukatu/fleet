@@ -47,7 +47,7 @@ git clone https://github.com/jukatu/fleet.git
 cd fleet
 ```
 
-### Bootstrap dev cluster
+### Dev bootstrap
 ```bash
 kind create cluster --name dev --config=clusters/cluster-dev.yaml
 
@@ -65,4 +65,14 @@ flux bootstrap github \
 
 # Since `flux bootstrap` updated the fleet remote repository, we ensure to update the changes locally.
 git pull
+```
+
+### Dev workflow
+#### Create a git source pointing to our application source code repository main branch
+```bash
+flux create source git webapp \
+  --url=https://github.com/jukatu/podinfo \
+  --branch=dev \
+  --interval=30s \
+  --export > ./dev-cluster/webapp-source.yaml
 ```
