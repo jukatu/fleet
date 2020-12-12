@@ -63,7 +63,8 @@ flux bootstrap github \
   --personal \
   --context kind-dev
 
-# Since `flux bootstrap` updated the fleet remote repository, we ensure to update the changes locally.
+# Since `flux bootstrap` updated the fleet remote repository, 
+# we ensure to update the changes locally.
 git pull
 ```
 
