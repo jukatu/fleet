@@ -82,9 +82,23 @@ flux create source git webapp \
 ```bash
 flux create kustomization webapp-common \
   --source=webapp \
-  --path="./deploy/overlays/dev/webapp" \
+  --path="./deploy/overlays/dev/webapp/common" \
   --prune=true \
   --validation=client \
   --interval=1h \
   --export > ./dev-cluster/webapp-common.yaml
+```
+
+#### Create a kustomization for the frontend service that depends on backend
+```bash
+flux create kustomization webapp-frontend \
+  --depends-on=webapp-backend \
+  --source=webapp \
+  --path="./deploy/webapp/frontend" \
+  --prune=true \
+  --validation=client \
+  --interval=10m \
+  --health-check="Deployment/frontend.webapp" \
+  --health-check-timeout=2m \
+  --export > ./dev-cluster/webapp-frontend.yaml
 ```
