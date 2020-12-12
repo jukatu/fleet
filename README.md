@@ -73,7 +73,7 @@ git pull
 ```bash
 flux create source git webapp \
   --url=https://github.com/jukatu/podinfo \
-  --branch=dev \
+  --branch=main \
   --interval=30s \
   --export > ./dev-cluster/webapp-source.yaml
 ```
