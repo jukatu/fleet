@@ -29,4 +29,8 @@ This GitHub repository will be used to manage 3 Kubernetes clusters:
 Using the Flux CLI we'll do the following:
 * configure each cluster to synchronise with a directory inside the fleet repository
 * register app sources (git repositories) that contain plain Kubernetes manifests or Kustomize overlays
-* configure app deployments on all clusters (pre-releases on staging, semver releases on production -- TODO: complete actual git refs)
+* configure app deployments on all clusters (pre-releases on staging, semver releases on production
+  * TODO: complete actual git refs
+
+## Boostrap
+### 
