@@ -33,4 +33,35 @@ Using the Flux CLI we'll do the following:
   * TODO: complete actual git refs
 
 ## Boostrap
-### 
+We will create Ingress ready clusters from yaml configurations.
+
+The only difference between the configuration are the hosted ports to allow to run a full workflow demo on a single host.
+    
+On actual usage, we will use, instead the same default host ports (80 and 443) for all clusters.
+
+
+### Prepare Bootstrap repo
+```bash
+# Go to the fleet repo
+git clone https://github.com/jukatu/fleet.git
+cd fleet
+```
+
+### Bootstrap dev
+```bash
+kind create cluster --name staging --config=clusters/cluster-dev.yaml
+
+kubectl cluster-info --context kind-staging
+
+flux check --pre --context kind-staging
+
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=fleet \
+  --branch=main \
+  --path=staging-cluster \
+  --personal \
+  --context kind-staging
+
+git pull
+```
