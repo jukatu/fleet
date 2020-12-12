@@ -89,16 +89,16 @@ flux create kustomization webapp-common \
   --export > ./dev-cluster/webapp-common.yaml
 ```
 
-#### Create a kustomization for the frontend service that depends on backend
+#### Create a kustomization for the backend service that depends on common
 ```bash
-flux create kustomization webapp-frontend \
-  --depends-on=webapp-backend \
+flux create kustomization webapp-backend \
+  --depends-on=webapp-common \
   --source=webapp \
-  --path="./deploy/webapp/frontend" \
+  --path="./deploy/webapp/backend" \
   --prune=true \
   --validation=client \
   --interval=10m \
-  --health-check="Deployment/frontend.webapp" \
+  --health-check="Deployment/backend.webapp" \
   --health-check-timeout=2m \
-  --export > ./dev-cluster/webapp-frontend.yaml
+  --export > ./dev-cluster/webapp-backend.yaml
 ```
