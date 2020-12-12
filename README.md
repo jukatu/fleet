@@ -49,19 +49,19 @@ cd fleet
 
 ### Bootstrap dev
 ```bash
-kind create cluster --name staging --config=clusters/cluster-dev.yaml
+kind create cluster --name dev --config=clusters/cluster-dev.yaml
 
-kubectl cluster-info --context kind-staging
+kubectl cluster-info --context kind-dev
 
-flux check --pre --context kind-staging
+flux check --pre --context kind-dev
 
 flux bootstrap github \
   --owner=$GITHUB_USER \
   --repository=fleet \
   --branch=main \
-  --path=staging-cluster \
+  --path=dev-cluster \
   --personal \
-  --context kind-staging
+  --context kind-dev
 
 git pull
 ```
