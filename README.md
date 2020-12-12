@@ -94,7 +94,7 @@ flux create kustomization webapp-common \
 flux create kustomization webapp-backend \
   --depends-on=webapp-common \
   --source=webapp \
-  --path="./deploy/webapp/backend" \
+  --path="./deploy/overlays/dev/webapp/common" \
   --prune=true \
   --validation=client \
   --interval=10m \
